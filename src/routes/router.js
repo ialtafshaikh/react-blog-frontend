@@ -13,6 +13,7 @@ import "../sass/style.scss";
 
 //css
 import "../styles/form.css";
+import "../styles/home.css";
 
 export default class Router extends Component {
   render() {

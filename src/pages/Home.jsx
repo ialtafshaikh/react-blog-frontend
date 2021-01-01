@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
+import { Row, Col } from "reactstrap";
 
 import { endpoint, login } from "../endpoints";
 
 import Login from "./Login";
+import BlogCard from "../components/BlogCard";
 
 export default class Home extends Component {
   constructor() {
@@ -14,6 +16,7 @@ export default class Home extends Component {
       email: "",
       password: "",
       loginError: "",
+      currentUser: {},
     };
   }
   componentDidMount = () => {
@@ -28,8 +31,8 @@ export default class Home extends Component {
         // alert("Please Login to continue");
         throw new Error("Please Login to continue");
       })
-      .then(({ todos, currentUser }) => {
-        this.setState({ isLoggedIn: true });
+      .then(({ blogs, currentUser }) => {
+        this.setState({ isLoggedIn: true, currentUser: currentUser });
         this.loadBlogs();
       })
       .catch((error) => {
@@ -48,7 +51,6 @@ export default class Home extends Component {
         throw new Error("Please Login to continue");
       })
       .then(({ blogs, currentUser }) => {
-        console.log(blogs);
         this.setState({ blogs: blogs });
       })
       .catch((error) => {
@@ -108,7 +110,7 @@ export default class Home extends Component {
         }
         Cookies.set("jwt", data.data[0]["jwt"]);
         this.setState({ isLoggedIn: true });
-        this.loadTodos();
+        this.loadBlogs();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -125,7 +127,15 @@ export default class Home extends Component {
       <div>
         {this.state.isLoggedIn ? (
           <div className="body-container">
-            <h1>card</h1>
+            <Row>
+              {this.state.blogs.map((blog) => {
+                return (
+                  <Col sm="3" className="py-2">
+                    <BlogCard blog={blog} />
+                  </Col>
+                );
+              })}
+            </Row>
           </div>
         ) : (
           <Login

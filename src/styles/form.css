@@ -10,7 +10,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "Share Tech", sans-serif;
-  height: 100vh;
+  height: 100%;
 }
 
 .form-container {

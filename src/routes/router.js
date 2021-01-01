@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 
 //components
 import Navigation from "../components/Navbar";
+import Footer from "../components/Footer";
 
 //sass
 import "../sass/style.scss";
@@ -20,6 +21,7 @@ export default class Router extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
           </Switch>
+          <Footer />
         </BrowserRouter>
       </div>
     );

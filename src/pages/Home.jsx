@@ -30,12 +30,32 @@ export default class Home extends Component {
       })
       .then(({ todos, currentUser }) => {
         this.setState({ isLoggedIn: true });
-        this.loadTodos();
+        this.loadBlogs();
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
+
+  loadBlogs = () => {
+    let myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
+    fetch(endpoint, { headers: myHeaders, mode: "cors" })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Please Login to continue");
+      })
+      .then(({ blogs, currentUser }) => {
+        console.log(blogs);
+        this.setState({ blogs: blogs });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   setEmail = (event) => {
     this.setState({ email: event.target.value });
   };

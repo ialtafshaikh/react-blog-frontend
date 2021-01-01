@@ -11,6 +11,9 @@ import Footer from "../components/Footer";
 //sass
 import "../sass/style.scss";
 
+//css
+import "../styles/form.css";
+
 export default class Router extends Component {
   render() {
     return (

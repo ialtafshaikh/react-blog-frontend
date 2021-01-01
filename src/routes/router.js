@@ -7,6 +7,9 @@ import Home from "../pages/Home";
 //components
 import Navigation from "../components/Navbar";
 
+//sass
+import "../sass/style.scss";
+
 export default class Router extends Component {
   render() {
     return (

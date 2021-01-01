@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 //pages
 import Home from "../pages/Home";
+import Signup from "../pages/Signup";
+import BlogDetail from "../pages/BlogDetail";
 
 //components
 import Navigation from "../components/Navbar";
@@ -24,6 +26,8 @@ export default class Router extends Component {
 
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/blog/:id" exact component={BlogDetail} />
+            <Route path="/signup" exact component={Signup} />
           </Switch>
           <Footer />
         </BrowserRouter>

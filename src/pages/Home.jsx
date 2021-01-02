@@ -6,6 +6,7 @@ import { endpoint, login } from "../endpoints";
 
 import Login from "./Login";
 import BlogCard from "../components/BlogCard";
+import Navbar from "../components/Navbar";
 
 export default class Home extends Component {
   constructor() {
@@ -120,32 +121,39 @@ export default class Home extends Component {
   logout = (event) => {
     Cookies.remove("jwt");
     this.setState({ isLoggedIn: false });
+    this.props.history.push("/");
   };
 
   render() {
     return (
       <div>
         {this.state.isLoggedIn ? (
-          <div className="body-container">
-            <Row>
-              {this.state.blogs.map((blog) => {
-                return (
-                  <Col sm="3" className="py-2" key={blog.blogID}>
-                    <BlogCard blog={blog} />
-                  </Col>
-                );
-              })}
-            </Row>
+          <div>
+            <Navbar isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
+            <div className="body-container">
+              <Row>
+                {this.state.blogs.map((blog) => {
+                  return (
+                    <Col sm="3" className="py-2" key={blog.blogID}>
+                      <BlogCard blog={blog} />
+                    </Col>
+                  );
+                })}
+              </Row>
+            </div>
           </div>
         ) : (
-          <Login
-            login={this.login}
-            setEmail={this.setEmail}
-            email={this.state.email}
-            password={this.state.password}
-            setPassword={this.setPassword}
-            error={this.state.loginError}
-          />
+          <div>
+            <Navbar isLoggedIn={this.state.isLoggedIn} />
+            <Login
+              login={this.login}
+              setEmail={this.setEmail}
+              email={this.state.email}
+              password={this.state.password}
+              setPassword={this.setPassword}
+              error={this.state.loginError}
+            />
+          </div>
         )}
       </div>
     );

@@ -5,9 +5,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Signup from "../pages/Signup";
 import BlogDetail from "../pages/BlogDetail";
+import CreateBlog from "../pages/CreateBlog";
 
 //components
-import Navigation from "../components/Navbar";
 import Footer from "../components/Footer";
 
 //sass
@@ -22,12 +22,11 @@ export default class Router extends Component {
     return (
       <div>
         <BrowserRouter>
-          <Navigation />
-
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/blog/:id" exact component={BlogDetail} />
             <Route path="/signup" exact component={Signup} />
+            <Route path="/create" exact component={CreateBlog} />
           </Switch>
           <Footer />
         </BrowserRouter>

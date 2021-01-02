@@ -134,8 +134,8 @@ export default class Home extends Component {
               <Row>
                 {this.state.blogs.map((blog) => {
                   return (
-                    <Col sm="3" className="py-2" key={blog.blogID}>
-                      <BlogCard blog={blog} />
+                    <Col sm="3" className="py-2">
+                      <BlogCard blog={blog} key={blog.blogID} />
                     </Col>
                   );
                 })}

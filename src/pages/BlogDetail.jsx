@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RelatedLinks from "../components/RelatedLinks";
 import Cookies from "js-cookie";
 import { endpoint } from "../endpoints";
+import Navigation from "../components/Navbar";
 
 export default class BlogDetail extends Component {
   constructor() {
@@ -51,24 +52,27 @@ export default class BlogDetail extends Component {
     return Object.keys(this.state.blog).length === 0 ? (
       <p>Loading..</p>
     ) : (
-      <div className="container" id="blog">
-        <div className="blog-detail">
-          <div className="blog-container">
-            <div className="blog-info">
-              <h2 className="blog-title">{this.state.blog.title}</h2>
-            </div>
-            <div className="blog-img">
-              <img src={this.state.blog.imageUrl} alt="img" />
-            </div>
-            <div className="blog-content">
-              <p className="content">{this.state.blog.content}</p>
+      <div>
+        <Navigation isLoggedIn={true} />
+        <div className="container" id="blog">
+          <div className="blog-detail">
+            <div className="blog-container">
+              <div className="blog-info">
+                <h2 className="blog-title">{this.state.blog.title}</h2>
+              </div>
+              <div className="blog-img">
+                <img src={this.state.blog.imageUrl} alt="img" />
+              </div>
+              <div className="blog-content">
+                <p className="content">{this.state.blog.content}</p>
+              </div>
             </div>
           </div>
+          <RelatedLinks
+            blog={this.state.blog}
+            renderNewBlog={this.renderNewBlog}
+          />
         </div>
-        <RelatedLinks
-          blog={this.state.blog}
-          renderNewBlog={this.renderNewBlog}
-        />
       </div>
     );
   }

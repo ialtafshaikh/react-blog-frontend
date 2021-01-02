@@ -7,7 +7,7 @@ footer {
   background-color: $bg-color;
   color: $text-color;
   height: 20vh;
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;

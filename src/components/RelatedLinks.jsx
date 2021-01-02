@@ -15,7 +15,7 @@ class RelatedLinks extends Component {
                 id={link.blogID}
               >
                 <img
-                  src="https://lh3.googleusercontent.com/proxy/HT3iW2adGH7XPg1uajYeYm5dwBNTqCsXnvfF06cEdlRk8dbS6p5a1PSTYwpt6iaX0wIzg-fY0tE08or7eptoaqU9McD-ImDk4W751PzVWmoVkyDJ0rQ23zP7Z3JNNg"
+                  src="https://github.com/ialtafshaikh/static-files/raw/master/dummp-image.jpg"
                   alt=""
                 />
                 <p className="link-title">{link.blogID}</p>

@@ -30,9 +30,10 @@ export default class BlogDetail extends Component {
   };
 
   renderNewBlog = (event) => {
+    this.props.history.push("/blog/" + event.target.parentNode.id);
+    this.setState({ blog: {} });
     let myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
-
     fetch(endpoint + event.target.parentNode.id, {
       method: "GET",
       headers: myHeaders,

@@ -20,7 +20,7 @@ body {
 
 .form-container .form-title {
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .error {
@@ -28,7 +28,7 @@ body {
   color: rgb(247, 66, 26);
   font-weight: bold;
   font-size: 20px;
-  background-color: wheat;
+  /* background-color: wheat; */
   width: 50%;
   margin: 0 auto;
 }
@@ -37,7 +37,7 @@ body {
   width: 80%;
   margin: 10% auto;
   padding: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 input[type="text"],
@@ -51,7 +51,7 @@ input[type="submit"] {
   padding: 8px 15px;
   margin: 4px 0;
   display: inline-block;
-  border: 2px solid rgb(255, 255, 255);
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -64,7 +64,7 @@ input[type="submit"] {
 }
 
 .user-details span {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 .user-creds {
@@ -94,14 +94,14 @@ input[type="email"]:focus {
 }
 
 label {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-weight: 500;
 }
 input[type="radio"] {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 fieldset {
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
 }
 
 legend {

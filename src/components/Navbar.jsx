@@ -1,6 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-export default function Navbar() {
+function Navbar() {
   return (
     <header>
       <nav class="navigation">
@@ -53,3 +54,5 @@ export default function Navbar() {
     </header>
   );
 }
+
+export default withRouter(Navbar);

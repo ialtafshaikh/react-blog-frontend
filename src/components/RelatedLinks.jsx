@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-export default class RelatedLinks extends Component {
+class RelatedLinks extends Component {
   render() {
+    console.log("props of related links", this.props);
     return (
       <aside className="side-bar">
         <h2>Related Links</h2>
@@ -27,3 +28,5 @@ export default class RelatedLinks extends Component {
     );
   }
 }
+
+export default withRouter(RelatedLinks);

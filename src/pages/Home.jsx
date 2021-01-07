@@ -1,60 +1,57 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
 import { Row, Col } from "reactstrap";
+import { connect } from "react-redux";
 
 import { endpoint } from "../endpoints";
 
 import BlogCard from "../components/BlogCard";
 import Navbar from "../components/Navbar";
 
-export default class Home extends Component {
+class Home extends Component {
   constructor() {
     super();
     this.state = {
       blogs: [],
-      isLoggedIn: false,
-      currentUser: {},
-      loading: true,
+      loading: false,
     };
   }
   componentDidMount = () => {
     let myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
-
     fetch(endpoint, { headers: myHeaders, mode: "cors" })
       .then((response) => {
         if (response.ok) {
           return response.json();
         }
-        // alert("Please Login to continue");
+        this.props.history.push("/login");
         throw new Error("Please Login to continue");
       })
       .then(({ blogs, currentUser }) => {
-        this.setState({ isLoggedIn: true, currentUser: currentUser });
-        this.loadBlogs();
+        this.setState({ blogs: [...blogs] });
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
 
-  loadBlogs = () => {
-    let myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
-    fetch(endpoint, { headers: myHeaders, mode: "cors" })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Please Login to continue");
-      })
-      .then(({ blogs, currentUser }) => {
-        this.setState({ blogs: blogs });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+  // loadBlogs = () => {
+  //   let myHeaders = new Headers();
+  //   myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
+  //   fetch(endpoint, { headers: myHeaders, mode: "cors" })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       }
+  //       throw new Error("Please Login to continue");
+  //     })
+  //     .then(({ blogs, currentUser }) => {
+  //       this.setState({ blogs: blogs });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // };
 
   logout = (event) => {
     // Cookies.remove("jwt");
@@ -63,13 +60,19 @@ export default class Home extends Component {
   };
 
   render() {
+    if (!Cookies.get("isLoggedIn") && !this.props.isLoggedIn) {
+      this.props.history.push("/login");
+    }
     return (
       <div>
         {this.state.loading ? (
-          <div>Loading..</div>
+          <>
+            <Navbar />
+            <div>Loading..</div>
+          </>
         ) : (
           <>
-            <Navbar isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
+            <Navbar />
             <div className="body-container">
               <Row>
                 {this.state.blogs.map((blog) => {
@@ -87,3 +90,11 @@ export default class Home extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.loginReducer.isLoggedIn,
+  };
+};
+
+export default connect(mapStateToProps)(Home);

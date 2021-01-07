@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import Cookies from "js-cookie";
 
 import Navbar from "../components/Navbar";
 
@@ -13,7 +15,6 @@ class Login extends Component {
       email: "",
       password: "",
       loginError: "",
-      // currentUser: {},
     };
   }
 
@@ -57,6 +58,10 @@ class Login extends Component {
   };
 
   render() {
+    // console.log();
+    if (Cookies.get("isLoggedIn")) {
+      this.props.history.push("/");
+    }
     return (
       <>
         <Navbar />
@@ -98,5 +103,10 @@ class Login extends Component {
     );
   }
 }
-
-export default Login;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    isLoggedIn: state.loginReducer.isLoggedIn,
+  };
+};
+export default connect(mapStateToProps)(Login);

@@ -58,7 +58,6 @@ function Navbar(props) {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   return {
     isLoggedIn: state.loginReducer.isLoggedIn,
   };

@@ -1,4 +1,4 @@
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 
 import { userActionTypes } from "../constants/usersAction.types";
 import { login } from "../../endpoints";
@@ -22,7 +22,8 @@ const usersActionCreator = (actionType, payload = {}) => {
           //   return;
           console.log("error in login");
         }
-        // Cookies.set("jwt", data.data[0]["jwt"]);
+        Cookies.set("jwt", data.data[0]["jwt"]);
+        Cookies.set("isLoggedIn", "true");
         dispatch({
           type: userActionTypes.LOGIN_SUCCESS,
           payload: { isLoggedIn: true },

@@ -92,7 +92,6 @@ export default class Home extends Component {
     formData.forEach(function (value, key) {
       formObject[key] = value;
     });
-    console.log(JSON.stringify(formObject));
 
     fetch(login, {
       method: "POST", // or 'PUT'

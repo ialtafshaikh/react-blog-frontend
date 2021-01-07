@@ -33,8 +33,8 @@ const usersActionCreator = (actionType, payload = {}) => {
       return async (dispatch) => {
         let myHeaders = new Headers();
         myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
-
-        let response = await fetch(endpoint, {
+        let response;
+        response = await fetch(endpoint, {
           headers: myHeaders,
           mode: "cors",
         });

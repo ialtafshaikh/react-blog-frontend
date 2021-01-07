@@ -1,13 +1,20 @@
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 import { userActionTypes } from "../constants/usersAction.types";
 import { login } from "../../endpoints";
 
-const usersActionCreator = (actionType) => {
+const usersActionCreator = (actionType, payload = {}) => {
   switch (actionType) {
     case userActionTypes.LOGIN_SUCCESS:
       return async (dispatch) => {
-        let response = await fetch(login);
+        let response = await fetch(login, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: payload.formObject,
+        });
+
         let data = await response.json();
 
         if (data.status.status === "unsuccessful") {

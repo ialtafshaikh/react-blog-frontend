@@ -8,6 +8,10 @@ import Login from "./Login";
 import BlogCard from "../components/BlogCard";
 import Navbar from "../components/Navbar";
 
+import store from "../redux/store/store";
+import { userActionTypes } from "../redux/constants/usersAction.types";
+import usersActionCreator from "../redux/actions/usersAction.creator";
+
 export default class Home extends Component {
   constructor() {
     super();
@@ -93,28 +97,34 @@ export default class Home extends Component {
       formObject[key] = value;
     });
 
-    fetch(login, {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formObject),
-    })
-      .then((response) => {
-        return response.json();
+    store.dispatch(
+      usersActionCreator(userActionTypes.LOGIN_SUCCESS, {
+        formObject: JSON.stringify(formObject),
       })
-      .then((data) => {
-        if (data.status.status === "unsuccessful") {
-          this.setState({ loginError: data.status.message });
-          return;
-        }
-        Cookies.set("jwt", data.data[0]["jwt"]);
-        this.setState({ isLoggedIn: true });
-        this.loadBlogs();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    );
+
+    // fetch(login, {
+    //   method: "POST", // or 'PUT'
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formObject),
+    // })
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     if (data.status.status === "unsuccessful") {
+    //       this.setState({ loginError: data.status.message });
+    //       return;
+    //     }
+    //     Cookies.set("jwt", data.data[0]["jwt"]);
+    //     this.setState({ isLoggedIn: true });
+    //     this.loadBlogs();
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
   };
 
   logout = (event) => {

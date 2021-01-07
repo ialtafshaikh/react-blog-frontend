@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Cookies from "js-cookie";
 
+// component
 import Navbar from "../components/Navbar";
 
+// redux
 import store from "../redux/store/store";
 import { userActionTypes } from "../redux/constants/usersAction.types";
 import usersActionCreator from "../redux/actions/usersAction.creator";
@@ -43,12 +45,7 @@ class Login extends Component {
       return;
     }
 
-    var formData = new FormData(event.target);
-
-    var formObject = {};
-    formData.forEach(function (value, key) {
-      formObject[key] = value;
-    });
+    var formObject = { email: this.state.email, password: this.state.password };
 
     store.dispatch(
       usersActionCreator(userActionTypes.LOGIN_SUCCESS, {
@@ -58,7 +55,6 @@ class Login extends Component {
   };
 
   render() {
-    // console.log();
     if (Cookies.get("isLoggedIn") === "true") {
       this.props.history.push("/");
     }

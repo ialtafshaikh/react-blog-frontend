@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import RelatedLinks from "../components/RelatedLinks";
 import Cookies from "js-cookie";
-import { endpoint } from "../endpoints";
-import Navigation from "../components/Navbar";
 
+// constants
+import { endpoint } from "../endpoints";
+
+// components
+import Navigation from "../components/Navbar";
+import RelatedLinks from "../components/RelatedLinks";
+
+// redux
 import store from "../redux/store/store";
 import { userActionTypes } from "../redux/constants/usersAction.types";
 

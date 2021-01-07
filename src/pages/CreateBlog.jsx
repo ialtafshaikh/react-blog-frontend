@@ -5,7 +5,7 @@ export default class CreateBlog extends Component {
   render() {
     return (
       <div>
-        <Navigation isLoggedIn={true} />
+        <Navigation />
 
         <h1>create blog</h1>
       </div>

@@ -3,9 +3,11 @@ import Cookies from "js-cookie";
 import { Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 
+// components
 import BlogCard from "../components/BlogCard";
 import Navbar from "../components/Navbar";
 
+// redux
 import store from "../redux/store/store";
 import { userActionTypes } from "../redux/constants/usersAction.types";
 import usersActionCreator from "../redux/actions/usersAction.creator";
@@ -20,48 +22,9 @@ class Home extends Component {
   }
   componentDidMount = () => {
     store.dispatch(usersActionCreator(userActionTypes.AUTHORIZED));
-    // let myHeaders = new Headers();
-    // myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
-    // fetch(endpoint, { headers: myHeaders, mode: "cors" })
-    //   .then((response) => {
-    //     if (response.ok) {
-    //       return response.json();
-    //     }
-    //     this.props.history.push("/login");
-    //     throw new Error("Please Login to continue");
-    //   })
-    //   .then(({ blogs, currentUser }) => {
-    //     this.setState({ blogs: [...blogs] });
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
   };
 
-  // loadBlogs = () => {
-  //   let myHeaders = new Headers();
-  //   myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
-  //   fetch(endpoint, { headers: myHeaders, mode: "cors" })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       }
-  //       throw new Error("Please Login to continue");
-  //     })
-  //     .then(({ blogs, currentUser }) => {
-  //       this.setState({ blogs: blogs });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // };
-
   render() {
-    // console.log(Cookies.get("isLoggedIn") === "false");
-    // console.log(!this.props.isLoggedIn);
-    // console.log(
-    //   Cookies.get("isLoggedIn") === "false" && !this.props.isLoggedIn
-    // );
     if (Cookies.get("isLoggedIn") === "false" && !this.props.isLoggedIn) {
       this.props.history.push("/login");
     }

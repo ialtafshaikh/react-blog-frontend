@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import Cookies from "js-cookie";
+
+// component
 import Navigation from "../components/Navbar";
 
+// constants
 import { signup } from "../endpoints";
 
 export default class Signup extends Component {
@@ -39,9 +43,12 @@ export default class Signup extends Component {
       });
   };
   render() {
+    if (Cookies.get("isLoggedIn") === "true") {
+      this.props.history.push("/");
+    }
     return (
-      <div>
-        <Navigation isLoggedIn={false} />
+      <>
+        <Navigation />
         <div className="form-container">
           <h1 className="form-title">User Registration Form</h1>
           <p className="error">{this.state.signupError}</p>
@@ -129,7 +136,7 @@ export default class Signup extends Component {
             </p>
           </form>
         </div>
-      </div>
+      </>
     );
   }
 }

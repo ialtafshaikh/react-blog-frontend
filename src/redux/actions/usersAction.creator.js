@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 
 import { userActionTypes } from "../constants/usersAction.types";
-import { login } from "../../endpoints";
+import { login, endpoint } from "../../endpoints";
 
 const usersActionCreator = (actionType, payload = {}) => {
   switch (actionType) {
@@ -28,7 +28,30 @@ const usersActionCreator = (actionType, payload = {}) => {
           type: userActionTypes.LOGIN_SUCCESS,
           payload: { isLoggedIn: true },
         });
-        // this.loadBlogs();
+      };
+    case userActionTypes.AUTHORIZED:
+      return async (dispatch) => {
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
+
+        let response = await fetch(endpoint, {
+          headers: myHeaders,
+          mode: "cors",
+        });
+
+        if (response.ok) {
+          let data = await response.json();
+          //   if (data.status.status === "unsuccessful") {
+          //     //   this.setState({ loginError: data.status.message });
+          //     //   return;
+          //     console.log("error in login");
+          //   }
+          //   Cookies.set("isLoggedIn", "true");
+          dispatch({
+            type: userActionTypes.LOGIN_SUCCESS,
+            payload: { isLoggedIn: true },
+          });
+        }
       };
 
     default:

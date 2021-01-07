@@ -8,6 +8,10 @@ import { endpoint } from "../endpoints";
 import BlogCard from "../components/BlogCard";
 import Navbar from "../components/Navbar";
 
+import store from "../redux/store/store";
+import { userActionTypes } from "../redux/constants/usersAction.types";
+import usersActionCreator from "../redux/actions/usersAction.creator";
+
 class Home extends Component {
   constructor() {
     super();
@@ -17,22 +21,23 @@ class Home extends Component {
     };
   }
   componentDidMount = () => {
-    let myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
-    fetch(endpoint, { headers: myHeaders, mode: "cors" })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        this.props.history.push("/login");
-        throw new Error("Please Login to continue");
-      })
-      .then(({ blogs, currentUser }) => {
-        this.setState({ blogs: [...blogs] });
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    store.dispatch(usersActionCreator(userActionTypes.AUTHORIZED));
+    // let myHeaders = new Headers();
+    // myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
+    // fetch(endpoint, { headers: myHeaders, mode: "cors" })
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       return response.json();
+    //     }
+    //     this.props.history.push("/login");
+    //     throw new Error("Please Login to continue");
+    //   })
+    //   .then(({ blogs, currentUser }) => {
+    //     this.setState({ blogs: [...blogs] });
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
   };
 
   // loadBlogs = () => {

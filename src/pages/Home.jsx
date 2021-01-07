@@ -80,7 +80,7 @@ class Home extends Component {
             <Navbar />
             <div className="body-container">
               <Row>
-                {this.state.blogs.map((blog) => {
+                {this.props.blogs.map((blog) => {
                   return (
                     <Col sm="3" className="py-2">
                       <BlogCard blog={blog} key={blog.blogID} />
@@ -99,6 +99,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.loginReducer.isLoggedIn,
+    blogs: state.blogReducer.blogs,
   };
 };
 

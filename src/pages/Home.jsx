@@ -39,15 +39,21 @@ class Home extends Component {
           <>
             <Navbar />
             <div className="body-container">
-              <Row>
-                {this.props.blogs.map((blog) => {
-                  return (
-                    <Col sm="3" className="py-2" key={blog.blogID}>
-                      <BlogCard blog={blog} />
-                    </Col>
-                  );
-                })}
-              </Row>
+              {this.props.blogs.map((blog, index) => {
+                return index % 4 === 0 ? (
+                  <Row>
+                    {this.props.blogs.slice(index, index + 4).map((blog) => {
+                      return (
+                        <Col className="py-2" key={blog.blogID}>
+                          <BlogCard blog={blog} />;
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                ) : (
+                  <></>
+                );
+              })}
             </div>
           </>
         )}

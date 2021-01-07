@@ -3,8 +3,6 @@ import Cookies from "js-cookie";
 import { Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 
-import { endpoint } from "../endpoints";
-
 import BlogCard from "../components/BlogCard";
 import Navbar from "../components/Navbar";
 
@@ -82,8 +80,8 @@ class Home extends Component {
               <Row>
                 {this.props.blogs.map((blog) => {
                   return (
-                    <Col sm="3" className="py-2">
-                      <BlogCard blog={blog} key={blog.blogID} />
+                    <Col sm="3" className="py-2" key={blog.blogID}>
+                      <BlogCard blog={blog} />
                     </Col>
                   );
                 })}

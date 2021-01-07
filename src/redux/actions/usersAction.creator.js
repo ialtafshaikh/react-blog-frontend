@@ -19,7 +19,6 @@ const usersActionCreator = (actionType, payload = {}) => {
 
         if (data.status.status === "unsuccessful") {
           //   this.setState({ loginError: data.status.message });
-          //   return;
           console.log("error in login");
         }
         Cookies.set("jwt", data.data[0]["jwt"]);
@@ -29,6 +28,7 @@ const usersActionCreator = (actionType, payload = {}) => {
           payload: { isLoggedIn: true },
         });
       };
+
     case userActionTypes.AUTHORIZED:
       return async (dispatch) => {
         let myHeaders = new Headers();
@@ -41,12 +41,7 @@ const usersActionCreator = (actionType, payload = {}) => {
 
         if (response.ok) {
           let { blogs } = await response.json();
-          //   if (data.status.status === "unsuccessful") {
-          //     //   this.setState({ loginError: data.status.message });
-          //     //   return;
-          //     console.log("error in login");
-          //   }
-          //   Cookies.set("isLoggedIn", "true");
+
           dispatch({
             type: userActionTypes.LOGIN_SUCCESS,
             payload: { isLoggedIn: true },

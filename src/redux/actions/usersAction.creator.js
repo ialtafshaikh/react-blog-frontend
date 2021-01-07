@@ -5,7 +5,7 @@ const usersActionCreator = (actionType) => {
     case userActionTypes.LOGIN_SUCCESS:
       return {
         type: userActionTypes.LOGIN_SUCCESS,
-        payload: { login: true },
+        payload: { isLoggedIn: true },
       };
 
     default:

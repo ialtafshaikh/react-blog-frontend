@@ -106,16 +106,16 @@ $secondary-color: #2f9ee5;
 
 @media (max-width: 575.98px) {
   .navigation {
-    padding: 0;
+    padding: 0 !important;
   }
   .navigation-container {
     ul {
-      margin-right: 0;
+      margin-right: 0 !important;
     }
     li {
       padding: 0;
       a {
-        display: none;
+        display: none !important;
       }
     }
   }
@@ -145,6 +145,7 @@ $secondary-color: #2f9ee5;
 
   footer {
     flex-direction: column;
+    text-align: center;
   }
 }
 /* Small devices (landscape phones, less than 768px) */

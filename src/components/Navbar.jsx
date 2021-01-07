@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -7,14 +7,24 @@ import store from "../redux/store/store";
 import { userActionTypes } from "../redux/constants/usersAction.types";
 import usersActionCreator from "../redux/actions/usersAction.creator";
 
+// style
+import navStyles from "../styles/Nav.module.css";
+
 function Navbar(props) {
+  const [toggle, setToggle] = useState(false);
+
   const navigate = (event) => {
     const route = event.target.getAttribute("data-link");
     props.history.push(route);
   };
+
   const logout = (event) => {
     store.dispatch(usersActionCreator(userActionTypes.LOGOUT));
     props.history.push("/login");
+  };
+
+  const toggleHam = (event) => {
+    setToggle(!toggle);
   };
   return (
     <header>
@@ -29,44 +39,47 @@ function Navbar(props) {
           />
         </div>
         <div className="navigation-container">
-          <ul>
-            <li className="nav-item active">
-              <a className="nav-link" data-link="/" onClick={navigate}>
-                Home
-              </a>
-            </li>
-            {props.isLoggedIn ? (
-              <>
-                <li className="nav-item">
+          {!toggle ? (
+            <>
+              <ul>
+                <li className="nav-item active">
                   <a className="nav-link" data-link="/" onClick={navigate}>
-                    Blogs
+                    Home
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    data-link="/create"
-                    onClick={navigate}
-                  >
-                    Create Blog{" "}
-                    <i className="fa fa-plus" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="nav-item" onClick={logout}>
-                  <a className="nav-link" id="logout">
-                    <i className="fa fa-sign-out" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </>
-            ) : (
-              <li></li>
-            )}
-          </ul>
-          <div id="ham">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+                {props.isLoggedIn ? (
+                  <>
+                    <li className="nav-item">
+                      <a className="nav-link" data-link="/" onClick={navigate}>
+                        Blogs
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link"
+                        data-link="/create"
+                        onClick={navigate}
+                      >
+                        Create Blog{" "}
+                        <i className="fa fa-plus" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li className="nav-item" onClick={logout}>
+                      <a className="nav-link" id="logout">
+                        <i className="fa fa-sign-out" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <li></li>
+                )}
+              </ul>
+            </>
+          ) : (
+            <></>
+          )}
+          <div id="ham" className={navStyles.hamburger} onClick={toggleHam}>
+            <i className="fa fa-bars fa-2x" style={{ color: "white" }}></i>
           </div>
         </div>
       </nav>

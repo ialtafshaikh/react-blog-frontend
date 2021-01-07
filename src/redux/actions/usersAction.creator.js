@@ -40,7 +40,7 @@ const usersActionCreator = (actionType, payload = {}) => {
         });
 
         if (response.ok) {
-          let data = await response.json();
+          let { blogs } = await response.json();
           //   if (data.status.status === "unsuccessful") {
           //     //   this.setState({ loginError: data.status.message });
           //     //   return;
@@ -50,6 +50,10 @@ const usersActionCreator = (actionType, payload = {}) => {
           dispatch({
             type: userActionTypes.LOGIN_SUCCESS,
             payload: { isLoggedIn: true },
+          });
+          dispatch({
+            type: userActionTypes.LOAD_BLOGS,
+            payload: { blogs: [...blogs] },
           });
         }
       };

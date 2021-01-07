@@ -22,7 +22,7 @@ function Navbar(props) {
               </a>
             </li>
             {props.isLoggedIn ? (
-              <div style={{ display: "inline" }} className="login-content">
+              <>
                 <li className="nav-item">
                   <a className="nav-link" href="/">
                     Blogs
@@ -39,7 +39,7 @@ function Navbar(props) {
                     <i className="fa fa-sign-out" aria-hidden="true"></i>
                   </a>
                 </li>
-              </div>
+              </>
             ) : (
               <li></li>
             )}

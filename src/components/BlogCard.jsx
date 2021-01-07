@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 
 class BlogCard extends Component {
   blogDetail = (event) => {
-    // console.log(event.target);
     this.props.history.push(`/blog/${event.target.id}`);
   };
   render() {

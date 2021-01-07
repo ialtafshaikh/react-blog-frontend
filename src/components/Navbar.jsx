@@ -2,13 +2,13 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+// redux
 import store from "../redux/store/store";
 import { userActionTypes } from "../redux/constants/usersAction.types";
 import usersActionCreator from "../redux/actions/usersAction.creator";
 
 function Navbar(props) {
   const navigate = (event) => {
-    // console.log(event.target);
     const route = event.target.getAttribute("data-link");
     props.history.push(route);
   };

@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 class RelatedLinks extends Component {
-  // renderBlog = (event) => {
-  //   this.props.history.push(`/blog/${event.target.id}`);
-  // };
   render() {
     return (
       <aside className="side-bar">

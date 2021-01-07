@@ -6,7 +6,7 @@ import store from "../redux/store/store";
 import { userActionTypes } from "../redux/constants/usersAction.types";
 import usersActionCreator from "../redux/actions/usersAction.creator";
 
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -98,3 +98,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default Login;

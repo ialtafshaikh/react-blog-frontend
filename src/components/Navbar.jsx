@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 function Navbar(props) {
   return (
@@ -56,4 +57,11 @@ function Navbar(props) {
   );
 }
 
-export default withRouter(Navbar);
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    isLoggedIn: state.loginReducer.isLoggedIn,
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(Navbar));

@@ -56,14 +56,13 @@ class Home extends Component {
   //     });
   // };
 
-  logout = (event) => {
-    // Cookies.remove("jwt");
-    // this.setState({ isLoggedIn: false });
-    // this.props.history.push("/");
-  };
-
   render() {
-    if (!Cookies.get("isLoggedIn") && !this.props.isLoggedIn) {
+    // console.log(Cookies.get("isLoggedIn") === "false");
+    // console.log(!this.props.isLoggedIn);
+    // console.log(
+    //   Cookies.get("isLoggedIn") === "false" && !this.props.isLoggedIn
+    // );
+    if (Cookies.get("isLoggedIn") === "false" && !this.props.isLoggedIn) {
       this.props.history.push("/login");
     }
     return (

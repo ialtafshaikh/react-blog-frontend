@@ -55,8 +55,16 @@ const usersActionCreator = (actionType, payload = {}) => {
             type: userActionTypes.LOAD_BLOGS,
             payload: { blogs: [...blogs] },
           });
+        } else {
+          Cookies.remove("jwt");
+          Cookies.set("isLoggedIn", "false");
         }
       };
+
+    case userActionTypes.LOGOUT:
+      Cookies.remove("jwt");
+      Cookies.set("isLoggedIn", "false");
+      return { type: userActionTypes.LOGOUT, payload: { isLoggedIn: false } };
 
     default:
       return {

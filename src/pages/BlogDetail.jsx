@@ -4,6 +4,9 @@ import Cookies from "js-cookie";
 import { endpoint } from "../endpoints";
 import Navigation from "../components/Navbar";
 
+import store from "../redux/store/store";
+import { userActionTypes } from "../redux/constants/usersAction.types";
+
 export default class BlogDetail extends Component {
   constructor() {
     super();
@@ -22,8 +25,12 @@ export default class BlogDetail extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("blog:", data);
+        // console.log("blog:", data);
         this.setState({ blog: data });
+        store.dispatch({
+          type: userActionTypes.LOGIN_SUCCESS,
+          payload: { isLoggedIn: true },
+        });
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -50,10 +57,13 @@ export default class BlogDetail extends Component {
 
   render() {
     return Object.keys(this.state.blog).length === 0 ? (
-      <p>Loading..</p>
+      <>
+        <Navigation />
+        <p>Loading..</p>
+      </>
     ) : (
       <div>
-        <Navigation isLoggedIn={true} />
+        <Navigation />
         <div className="container" id="blog">
           <div className="blog-detail">
             <div className="blog-container">

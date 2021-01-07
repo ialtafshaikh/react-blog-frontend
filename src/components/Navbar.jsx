@@ -2,11 +2,19 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+import store from "../redux/store/store";
+import { userActionTypes } from "../redux/constants/usersAction.types";
+import usersActionCreator from "../redux/actions/usersAction.creator";
+
 function Navbar(props) {
   const navigate = (event) => {
     // console.log(event.target);
     const route = event.target.getAttribute("data-link");
     props.history.push(route);
+  };
+  const logout = (event) => {
+    store.dispatch(usersActionCreator(userActionTypes.LOGOUT));
+    props.history.push("/login");
   };
   return (
     <header>
@@ -44,8 +52,8 @@ function Navbar(props) {
                     <i className="fa fa-plus" aria-hidden="true"></i>
                   </a>
                 </li>
-                <li className="nav-item" onClick={props.logout}>
-                  <a className="nav-link" href="##" id="logout">
+                <li className="nav-item" onClick={logout}>
+                  <a className="nav-link" id="logout">
                     <i className="fa fa-sign-out" aria-hidden="true"></i>
                   </a>
                 </li>

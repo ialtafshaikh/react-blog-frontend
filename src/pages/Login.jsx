@@ -59,7 +59,7 @@ class Login extends Component {
 
   render() {
     // console.log();
-    if (Cookies.get("isLoggedIn")) {
+    if (Cookies.get("isLoggedIn") === "true") {
       this.props.history.push("/");
     }
     return (

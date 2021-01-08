@@ -42,6 +42,25 @@ export default class BlogDetail extends Component {
       });
   };
 
+  componentDidUpdate = () => {
+    if (this.state.blog.blogID !== this.props.match.params.id) {
+      let myHeaders = new Headers();
+      myHeaders.append("Authorization", "Bearer " + Cookies.get("jwt"));
+
+      fetch(endpoint + this.props.match.params.id, {
+        method: "GET",
+        headers: myHeaders,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({ blog: data });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  };
+
   renderNewBlog = (event) => {
     this.props.history.push("/blog/" + event.target.parentNode.id);
     this.setState({ blog: {} });

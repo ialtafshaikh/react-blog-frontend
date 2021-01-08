@@ -100,7 +100,7 @@ class Login extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     isLoggedIn: state.loginReducer.isLoggedIn,
   };

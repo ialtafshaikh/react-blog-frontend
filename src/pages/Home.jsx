@@ -21,6 +21,7 @@ class Home extends Component {
     };
   }
   componentDidMount = () => {
+    console.log("here");
     store.dispatch(usersActionCreator(userActionTypes.AUTHORIZED));
   };
 

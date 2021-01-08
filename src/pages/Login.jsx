@@ -16,7 +16,6 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      loginError: "",
     };
   }
 
@@ -63,7 +62,7 @@ class Login extends Component {
         <Navbar />
         <div className="form-container">
           <h1 className="form-title">User Login Form</h1>
-          {/* <p className="error">{this.props.error}</p> */}
+          <p className="error">{this.props.loginError}</p>
           <form
             action=""
             method=""
@@ -103,6 +102,7 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     isLoggedIn: state.loginReducer.isLoggedIn,
+    loginError: state.loginReducer.loginError,
   };
 };
 export default connect(mapStateToProps)(Login);

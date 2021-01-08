@@ -57,7 +57,7 @@ const usersActionCreator = (actionType, payload = {}) => {
           });
         } else {
           Cookies.remove("jwt");
-          Cookies.set("isLoggedIn", "false");
+          // Cookies.set("isLoggedIn", "false");
           dispatch({
             type: userActionTypes.LOGIN_FAILURE,
             payload: { isLoggedIn: false },

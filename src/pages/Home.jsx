@@ -42,7 +42,7 @@ class Home extends Component {
             <div className="body-container">
               {this.props.blogs.map((blog, index) => {
                 return index % 4 === 0 ? (
-                  <Row>
+                  <Row key={index}>
                     {this.props.blogs.slice(index, index + 4).map((blog) => {
                       return (
                         <Col className="py-2" key={blog.blogID}>

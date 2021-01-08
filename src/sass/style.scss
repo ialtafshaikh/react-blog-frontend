@@ -114,9 +114,10 @@ $secondary-color: #2f9ee5;
     }
     li {
       padding: 0;
-      a {
-        display: none !important;
-      }
+      display: none;
+      // a {
+      //   display: none !important;
+      // }
     }
   }
 
@@ -159,6 +160,18 @@ $secondary-color: #2f9ee5;
       display: block;
       margin-bottom: 10px;
     }
+  }
+}
+
+@media (min-width: 575.98px) {
+  .navigation {
+    display: flex !important;
+  }
+  .navigation-container ul {
+    display: flex !important;
+  }
+  .navigation-container li {
+    display: flex !important;
   }
 }
 

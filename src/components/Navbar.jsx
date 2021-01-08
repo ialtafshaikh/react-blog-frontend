@@ -13,6 +13,8 @@ import navStyles from "../styles/Nav.module.css";
 function Navbar(props) {
   const [toggle, setToggle] = useState(false);
 
+  const toogleClassObj = { display: "block" };
+
   const navigate = (event) => {
     const route = event.target.getAttribute("data-link");
     props.history.push(route);
@@ -28,7 +30,7 @@ function Navbar(props) {
   };
   return (
     <header>
-      <nav className="navigation">
+      <nav className="navigation" style={toggle ? toogleClassObj : {}}>
         <div className="logo-container">
           <img
             data-link="/"
@@ -39,45 +41,47 @@ function Navbar(props) {
           />
         </div>
         <div className="navigation-container">
-          {!toggle ? (
-            <>
-              <ul>
-                <li className="nav-item active">
+          <ul style={toggle ? toogleClassObj : {}}>
+            <li
+              className="nav-item active"
+              style={toggle ? toogleClassObj : {}}
+            >
+              <a className="nav-link" data-link="/" onClick={navigate}>
+                Home
+              </a>
+            </li>
+            {props.isLoggedIn ? (
+              <>
+                <li className="nav-item" style={toggle ? toogleClassObj : {}}>
                   <a className="nav-link" data-link="/" onClick={navigate}>
-                    Home
+                    Blogs
                   </a>
                 </li>
-                {props.isLoggedIn ? (
-                  <>
-                    <li className="nav-item">
-                      <a className="nav-link" data-link="/" onClick={navigate}>
-                        Blogs
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        data-link="/create"
-                        onClick={navigate}
-                      >
-                        Create Blog{" "}
-                        <i className="fa fa-plus" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li className="nav-item" onClick={logout}>
-                      <a className="nav-link" id="logout">
-                        <i className="fa fa-sign-out" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </>
-                ) : (
-                  <li></li>
-                )}
-              </ul>
-            </>
-          ) : (
-            <></>
-          )}
+                <li className="nav-item" style={toggle ? toogleClassObj : {}}>
+                  <a
+                    className="nav-link"
+                    data-link="/create"
+                    onClick={navigate}
+                  >
+                    Create Blog{" "}
+                    <i className="fa fa-plus" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li
+                  className="nav-item"
+                  onClick={logout}
+                  style={toggle ? toogleClassObj : {}}
+                >
+                  <a className="nav-link" id="logout">
+                    <i className="fa fa-sign-out" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </>
+            ) : (
+              <li></li>
+            )}
+          </ul>
+
           <div id="ham" className={navStyles.hamburger} onClick={toggleHam}>
             <i className="fa fa-bars fa-2x" style={{ color: "white" }}></i>
           </div>

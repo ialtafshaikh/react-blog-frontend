@@ -18,9 +18,14 @@ const usersActionCreator = (actionType, payload = {}) => {
         let data = await response.json();
 
         if (data.status.status === "unsuccessful") {
-          //   this.setState({ loginError: data.status.message });
+          dispatch({
+            type: userActionTypes.LOGIN_FAILURE,
+            payload: { isLoggedIn: false, loginError: data.status.message },
+          });
           console.log("error in login");
+          return;
         }
+
         Cookies.set("jwt", data.data[0]["jwt"]);
         Cookies.set("isLoggedIn", "true");
         dispatch({
@@ -53,6 +58,10 @@ const usersActionCreator = (actionType, payload = {}) => {
         } else {
           Cookies.remove("jwt");
           Cookies.set("isLoggedIn", "false");
+          dispatch({
+            type: userActionTypes.LOGIN_FAILURE,
+            payload: { isLoggedIn: false },
+          });
         }
       };
 

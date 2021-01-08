@@ -6,7 +6,17 @@ const loginReducer = (state = initialState, action) => {
   console.log("received action", action);
   switch (action.type) {
     case userActionTypes.LOGIN_SUCCESS:
-      return { ...state, isLoggedIn: action.payload.isLoggedIn };
+      return {
+        ...state,
+        isLoggedIn: action.payload.isLoggedIn,
+      };
+
+    case userActionTypes.LOGIN_FAILURE:
+      return {
+        ...state,
+        loginError: action.payload.loginError,
+      };
+
     case userActionTypes.LOGOUT:
       return { ...state, isLoggedIn: action.payload.isLoggedIn };
     default:

@@ -60,7 +60,7 @@ const usersActionCreator = (actionType, payload = {}) => {
           // Cookies.set("isLoggedIn", "false");
           dispatch({
             type: userActionTypes.LOGIN_FAILURE,
-            payload: { isLoggedIn: false },
+            payload: { isLoggedIn: false, loginError: "" },
           });
         }
       };

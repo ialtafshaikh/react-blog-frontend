@@ -21,7 +21,12 @@ class Home extends Component {
     };
   }
   componentDidMount = () => {
-    console.log("here");
+    if (
+      typeof Cookies.get("isLoggedIn") === "undefined" &&
+      typeof Cookies.get("jwt") === "undefined"
+    ) {
+      this.props.history.push("/login");
+    }
     store.dispatch(usersActionCreator(userActionTypes.AUTHORIZED));
   };
 

@@ -93,11 +93,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 - [Redux thub video](https://www.youtube.com/watch?v=Sqkm39rqmEg)
 
-- [Bootstrap and Reactstrap cards)(https://reactstrap.github.io/components/card/)
+- [Bootstrap and Reactstrap cards](https://reactstrap.github.io/components/card/)
 
-- [Redux Officail Tutorial)(https://redux.js.org/tutorials/essentials/part-1-overview-concepts)
+- [Redux Officail Tutorial](https://redux.js.org/tutorials/essentials/part-1-overview-concepts)
 
-- [Redux Tutorial playlist)(https://www.youtube.com/watch?v=9boMnm5X9ak&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK)
+- [Redux Tutorial playlist](https://www.youtube.com/watch?v=9boMnm5X9ak&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK)
 
 ### Deployment
 

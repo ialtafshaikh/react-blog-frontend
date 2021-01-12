@@ -28,6 +28,12 @@ Worked on all the Drawbacks previously mentioned
 - Used Redux-Thunk as a Middleware
 - Used Reactstrap and Bootstrap for layouting the Blog List (Blog Home)
 
+### Default User Login Credentials To See Blogs
+
+Email : altafshaikh@me.com
+
+Password : R#1aasdf
+
 
 ## Getting Started with Create React App
 

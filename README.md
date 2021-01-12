@@ -17,6 +17,18 @@
 - because of state management app is buggy - logout works only on home page
 - app reloads on each requets
 
+## Extented Features
+
+Worked on all the Drawbacks previously mentioned
+
+- Used Redux For Global State Management
+- bugs fixed :- logout working from each routes, checking auth and Dynamic Navigation
+- App reloads fixed using History object
+- maintained and re-performs auth and display blogs after page relods ( as redux looses its state ob page reloads)
+- Used Redux-Thunk as a Middleware
+- Used Reactstrap and Bootstrap for layouting the Blog List (Blog Home)
+
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -74,6 +86,18 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - [Learn react router](https://reactrouter.com/web/guides/quick-start)
 
 - [Learn react router video tutorial](https://www.youtube.com/watch?v=Law7wfdg_ls)
+
+- [Redux Thunk video](https://www.youtube.com/watch?v=z2XCUu2wIl0)
+
+- [Redux thunk Blog](https://medium.com/fullstack-academy/thunks-in-redux-the-basics-85e538a3fe60)
+
+- [Redux thub video](https://www.youtube.com/watch?v=Sqkm39rqmEg)
+
+- [Bootstrap and Reactstrap cards)(https://reactstrap.github.io/components/card/)
+
+- [Redux Officail Tutorial)(https://redux.js.org/tutorials/essentials/part-1-overview-concepts)
+
+- [Redux Tutorial playlist)(https://www.youtube.com/watch?v=9boMnm5X9ak&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK)
 
 ### Deployment
 
